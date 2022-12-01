@@ -17,7 +17,14 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div
+      style={{
+        backgroundColor: '#ccc',
+        borderRadius: '1rem',
+        padding: '1rem',
+        color: '#555',
+      }}
+    >
       {names.map((name) => (
         <div key={name.name}>
           {name.id}-{name.name}
