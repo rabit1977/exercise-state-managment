@@ -6,17 +6,22 @@ function App() {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
-
-  const [names, setNames] = useState([]);
+  const idRef = useRef(1);
+  const [names, setNames] = useState([
+    { id: idRef.current++, name: 'Andi' },
+    { id: idRef.current++, name: 'Baki' },
+  ]);
   const onAddName = () => {
-    setNames([...names, inputRef.current.value]);
+    setNames([...names, { id: idRef.current++, name: inputRef.current.value }]);
     inputRef.current.value = '';
   };
 
   return (
     <div className='App'>
       {names.map((name) => (
-        <div key={name}>{name}</div>
+        <div key={name.name}>
+          {name.id}-{name.name}
+        </div>
       ))}
       <input type='text' ref={inputRef} placeholder='make me use ref' />
       <button onClick={onAddName} className=''>
